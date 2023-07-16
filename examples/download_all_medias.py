@@ -24,14 +24,8 @@ def main(username: str, amount: int = 5) -> dict:
         if m.media_type == 1:
             # Photo
             paths.append(cl.photo_download(m.pk))
-        elif m.media_type == 2 and m.product_type == "feed":
-            # Video
-            paths.append(cl.video_download(m.pk))
-        elif m.media_type == 2 and m.product_type == "igtv":
-            # IGTV
-            paths.append(cl.video_download(m.pk))
-        elif m.media_type == 2 and m.product_type == "clips":
-            # Reels
+        elif m.media_type == 2 and m.product_type in ["feed","igtv","clips"]:
+            # Video or IGTV or Reels
             paths.append(cl.video_download(m.pk))
         elif m.media_type == 8:
             # Album
